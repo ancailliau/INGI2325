@@ -8,7 +8,7 @@ This package will stay minimal for obvious reasons ;-)
 
 ## Author
 
-P. Dutré, J. Dupuis, A. Cailliau
+P. Dutre, J. Dupuis, A. Cailliau
 
 ## Licence
 
