@@ -1,4 +1,3 @@
-
 <!ELEMENT Sdl (Cameras,Lights,Geometry,Textures?,Materials?,Scene)>
 <!ATTLIST Sdl>
 
@@ -10,7 +9,7 @@
 	position					CDATA			#REQUIRED
 	direction					CDATA			#REQUIRED
 	up							CDATA			#REQUIRED
-	fovy						CDATA			#REQUIRED	
+	fovy						CDATA			#REQUIRED
 	name						ID				#REQUIRED
 >
 
@@ -20,7 +19,7 @@
 <!ELEMENT DirectionalLight EMPTY>
 <!ATTLIST DirectionalLight
 	direction					CDATA			#REQUIRED
-	intensity					CDATA			"1"			
+	intensity					CDATA			"1"
 	color						CDATA			"1 1 1"
 	name						ID				#REQUIRED
 >
@@ -28,7 +27,7 @@
 <!ELEMENT PointLight EMPTY>
 <!ATTLIST PointLight
 	position					CDATA			#REQUIRED
-	intensity					CDATA			"1"			
+	intensity					CDATA			"1"
 	color						CDATA			"1 1 1"
 	name						ID				#REQUIRED
 >
@@ -38,7 +37,7 @@
 	position					CDATA			#REQUIRED
 	direction					CDATA			#REQUIRED
 	angle						CDATA			#REQUIRED
-	intensity					CDATA			"1"			
+	intensity					CDATA			"1"
 	color						CDATA			"1 1 1"
 	name						ID				#REQUIRED
 >
@@ -56,7 +55,7 @@
 <!ATTLIST Cylinder
 	radius						CDATA			#REQUIRED
 	height						CDATA			#REQUIRED
-	capped						(true|false)	"true"
+	capped						CDATA			"true"
 	name						ID				#REQUIRED
 >
 
@@ -64,7 +63,7 @@
 <!ATTLIST Cone
 	radius						CDATA			#REQUIRED
 	height						CDATA			#REQUIRED
-	capped						(true|false)	"true"
+	capped						CDATA			"true"
 	name						ID				#REQUIRED
 >
 
@@ -85,7 +84,7 @@
 <!ATTLIST IndexedTriangleSet
 	coordinates					CDATA			#REQUIRED
 	normals						CDATA			#IMPLIED
-	textureCoordinates			CDATA			#IMPLIED	
+	textureCoordinates			CDATA			#IMPLIED
 	coordinateIndices			CDATA			#REQUIRED
 	normalIndices				CDATA			#IMPLIED
 	textureCoordinateIndices	CDATA			#IMPLIED
@@ -106,7 +105,6 @@
 	src							CDATA			#REQUIRED
 	name						ID				#REQUIRED
 >
-
 
 <!ELEMENT Materials ((DiffuseMaterial|PhongMaterial|LinearCombinedMaterial)*)>
 <!ATTLIST Materials>
@@ -130,7 +128,7 @@
 	weight1						CDATA			"0.5"
 	material2					IDREF			#REQUIRED
 	weight2						CDATA			"0.5"
-	name						ID				#REQUIRED	
+	name						ID				#REQUIRED
 >
 
 <!ELEMENT Scene ((Shape|Rotate|Translate|Scale)+)>
@@ -162,7 +160,4 @@
 <!ATTLIST Scale
 	scale						CDATA			#REQUIRED
 >
-
-
-
 
