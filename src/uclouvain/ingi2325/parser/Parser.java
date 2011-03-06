@@ -56,7 +56,7 @@ public final class Parser extends DefaultHandler {
 	 * @return a boolean indicating if the parse was successful.
 	 */
 	public boolean parse(InputSource input, boolean validate, boolean echo) {
-		echoHandler = echo == true ? new EchoParserHandler() : null;
+		echoHandler = echo == true ? EchoParserHandler.makeHandler() : null;
 
 		try {
 			// use the default parser
