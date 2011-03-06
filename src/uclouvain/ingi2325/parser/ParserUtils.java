@@ -4,12 +4,6 @@ import java.lang.reflect.*;
 import java.util.*;
 
 import uclouvain.ingi2325.exception.ParseException;
-import uclouvain.ingi2325.math.Tuple2;
-import uclouvain.ingi2325.math.Tuple3;
-import uclouvain.ingi2325.utils.Color;
-import uclouvain.ingi2325.utils.Point3D;
-import uclouvain.ingi2325.utils.TextureCoordinates;
-import uclouvain.ingi2325.utils.Vector3D;
 
 /**
  * Utilities class used to parse Strings, floats, arrays of floats, ...
