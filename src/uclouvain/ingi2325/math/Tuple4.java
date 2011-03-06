@@ -1,10 +1,15 @@
 package uclouvain.ingi2325.math;
 
+import java.util.*;
+
+import uclouvain.ingi2325.exception.*;
+
 /**
  * Represents a tuple of four float.
  * 
  * @author Antoine Cailliau <antoine.cailliau@uclouvain.be>
  * @author Julien Dupuis
+ * @author Sébastien Doeraene <sjrdoeraene@gmail.com>
  */
 public abstract class Tuple4 {
 
@@ -118,5 +123,49 @@ public abstract class Tuple4 {
 	@Override
 	public String toString() {
 		return "(" + x + ", " + y + ", " + z + ", " + w + ")";
+	}
+
+	/**
+	 * Parse a Tuple4 from a string
+	 * <p>A valid example is:
+	 * <pre>5.3 -4.2 2 1.0</pre>
+	 * @param string   String representation
+	 * @param tuple    Tuple to be filled
+	 * @return The tuple
+	 * @throws ParseException string does not represent a valid Tuple4
+	 */
+	public static <T extends Tuple4> T valueOf(String string,
+			T tuple) throws ParseException {
+		StringTokenizer stringTokenizer = new StringTokenizer(string, " ");
+
+		try {
+			tuple.x = Float.parseFloat(stringTokenizer.nextToken());
+			tuple.y = Float.parseFloat(stringTokenizer.nextToken());
+			tuple.z = Float.parseFloat(stringTokenizer.nextToken());
+			tuple.w = Float.parseFloat(stringTokenizer.nextToken());
+		} catch (NoSuchElementException error) {
+			throwParseException(string, tuple);
+		} catch (NumberFormatException error) {
+			throwParseException(string, tuple);
+		}
+
+		if (stringTokenizer.hasMoreTokens())
+			throwParseException(string, tuple);
+
+		return tuple;
+	}
+
+	/**
+	 * Throw a parse exception
+	 * <p>This method never returns normally.
+	 * @param string   String that should have been parsed
+	 * @param tuple    Tuple that would have been filled
+	 * @throws ParseException
+	 */
+	private static void throwParseException(String string,
+			Tuple4 tuple) throws ParseException {
+		throw new ParseException(String.format(
+				"Cannot convert '%s' into a %s", string,
+				tuple.getClass().getSimpleName()));
 	}
 }
