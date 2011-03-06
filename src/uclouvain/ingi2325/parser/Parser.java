@@ -91,7 +91,7 @@ public final class Parser extends DefaultHandler {
 	 * Receive notification of the start of an element.
 	 */
 	public void startElement(String uri, String localName, String qName,
-			Attributes attributes) throws SAXException {
+			org.xml.sax.Attributes attributes) throws SAXException {
 		try {
 			// Sdl element
 			if (qName.equals("Sdl")) {
