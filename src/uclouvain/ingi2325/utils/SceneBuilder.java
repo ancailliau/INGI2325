@@ -69,9 +69,9 @@ public class SceneBuilder implements ParserHandler {
 		scene = new Scene();
 
 		Parser parser = new Parser();
-		parser.setHandler(this);
+		parser.addHandler(this);
 
-		if (parser.parse(inputSource, /* validate */true, /* echo */false) == false) {
+		if (!parser.parse(inputSource, /* validate */ true, /* echo */ false)) {
 			scene = null;
 		}
 
