@@ -53,13 +53,15 @@ public interface ParserHandler {
 	public void endLights() throws Exception;
 
 	@Attributes({"direction", "intensity", "color", "name"})
-	public void startDirectionalLight(Vector3D direction, float intensity,
-			Color color, String name) throws Exception;
+	public void startDirectionalLight(Vector3D direction,
+			@Optional("1") float intensity, @Optional("1 1 1") Color color,
+			String name) throws Exception;
 
 	public void endDirectionalLight() throws Exception;
 
 	@Attributes({"position", "intensity", "color", "name"})
-	public void startPointLight(Point3D position, float intensity, Color color,
+	public void startPointLight(Point3D position,
+			@Optional("1") float intensity, @Optional("1 1 1") Color color,
 			String name) throws Exception;
 
 	public void endPointLight() throws Exception;
@@ -67,8 +69,8 @@ public interface ParserHandler {
 	@Attributes({"position", "direction", "angle", "intensity", "color",
 		"name"})
 	public void startSpotLight(Point3D position, Vector3D direction,
-			float angle, float intensity, Color color, String name)
-			throws Exception;
+			float angle, @Optional("1") float intensity,
+			@Optional("1 1 1") Color color, String name) throws Exception;
 
 	public void endSpotLight() throws Exception;
 
@@ -85,14 +87,14 @@ public interface ParserHandler {
 	public void endSphere() throws Exception;
 
 	@Attributes({"radius", "height", "capped", "name"})
-	public void startCylinder(float radius, float height, boolean capped,
-			String name) throws Exception;
+	public void startCylinder(float radius, float height,
+			@Optional("true") boolean capped, String name) throws Exception;
 
 	public void endCylinder() throws Exception;
 
 	@Attributes({"radius", "height", "capped", "name"})
-	public void startCone(float radius, float height, boolean capped,
-			String name) throws Exception;
+	public void startCone(float radius, float height,
+			@Optional("true") boolean capped, String name) throws Exception;
 
 	public void endCone() throws Exception;
 
@@ -111,9 +113,11 @@ public interface ParserHandler {
 		"coordinateIndices", "normalIndices", "textureCoordinateIndices",
 		"name"})
 	public void startIndexedTriangleSet(Point3D[] coordinates,
-			Vector3D[] normals, TextureCoordinates[] textureCoordinates,
-			int[] coordinateIndices, int[] normalIndices,
-			int[] textureCoordinateIndices, String name) throws Exception;
+			@Optional Vector3D[] normals,
+			@Optional TextureCoordinates[] textureCoordinates,
+			int[] coordinateIndices, @Optional int[] normalIndices,
+			@Optional int[] textureCoordinateIndices,
+			String name) throws Exception;
 
 	public void endIndexedTriangleSet() throws Exception;
 
@@ -152,23 +156,24 @@ public interface ParserHandler {
 	public void endPhongMaterial() throws Exception;
 
 	@Attributes({"material1", "weight1", "material2", "weight2", "name"})
-	public void startLinearCombinedMaterial(String material1Name,
-			float weight1, String material2Name, float weight2, String name)
-			throws Exception;
+	public void startLinearCombinedMaterial(@IDRef String material1Name,
+			@Optional("0.5") float weight1, @IDRef String material2Name,
+			@Optional("0.5") float weight2, String name) throws Exception;
 
 	public void endLinearCombinedMaterial() throws Exception;
 
 	@Attributes({"camera", "lights", "background"})
 	@Contains(value = {"Shape", "Rotate", "Translate", "Scale"},
         many = OneToMany)
-	public void startScene(String cameraName, String[] lightNames,
-			Color background) throws Exception;
+	public void startScene(@IDRef String cameraName, String[] lightNames,
+			@Optional("0 0 0") Color background) throws Exception;
 
 	public void endScene() throws Exception;
 
 	@Attributes({"geometry", "material", "texture"})
-	public void startShape(String geometryName, String materialName,
-			String textureName) throws Exception;
+	public void startShape(@IDRef String geometryName,
+			@Optional @IDRef String materialName,
+			@Optional @IDRef String textureName) throws Exception;
 
 	public void endShape() throws Exception;
 
