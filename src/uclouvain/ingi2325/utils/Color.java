@@ -1,5 +1,6 @@
 package uclouvain.ingi2325.utils;
 
+import uclouvain.ingi2325.exception.*;
 import uclouvain.ingi2325.math.Tuple3;
 
 /**
@@ -7,6 +8,7 @@ import uclouvain.ingi2325.math.Tuple3;
  * 
  * @author Antoine Cailliau <antoine.cailliau@uclouvain.be>
  * @author Julien Dupuis
+ * @author Sébastien Doeraene <sjrdoeraene@gmail.com>
  */
 public class Color extends Tuple3 {
 
@@ -65,5 +67,16 @@ public class Color extends Tuple3 {
 		int j = Math.round(y * 255F);
 		int k = Math.round(z * 255F);
 		return new java.awt.Color(i, j, k);
+	}
+
+	/**
+	 * Parse a Color from a string
+	 * @param string   String representation
+	 * @return The Color represented by string
+	 * @throws ParseException string is not a valid Color
+	 * @see Tuple3#valueOf(String, Tuple3)
+	 */
+	public static Color valueOf(String string) throws ParseException {
+		return valueOf(string, new Color());
 	}
 }
